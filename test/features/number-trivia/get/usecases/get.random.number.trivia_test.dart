@@ -20,7 +20,7 @@ void main() {
   final tNumberTrivia = NumberTriviaEntity(number: 1, text: 'test');
 
   test(
-    'should get trivia for number from the repository',
+    'should get trivia for random number from the repository',
     () async {
       // arrange
       when(mockNumberTriviaRepository.getRandomNumberTrivia())
