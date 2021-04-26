@@ -1,4 +1,5 @@
 import 'package:clean_architecture/features/number-trivia/get/entities/number.trivia.entity.dart';
+import 'package:clean_architecture/features/number-trivia/get/entities/number.trivia.search.entity.dart';
 import 'package:clean_architecture/features/number-trivia/get/repository/abstract.number.trivia.repository.dart';
 import 'package:clean_architecture/features/number-trivia/get/usecases/get.concrete.number.trivia.dart';
 import 'package:dartz/dartz.dart';
@@ -26,14 +27,16 @@ void main() {
       // arrange
       when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
           .thenAnswer((_) async => Right(tNumberTrivia));
+      NumberTriviaSearchEntity searchEntity =
+          NumberTriviaSearchEntity(number: tNumber);
 
       // act
-      final result = await usecase.execute(number: tNumber);
+      final result = await usecase(param: searchEntity);
 
       // assert
       expect(result, Right(tNumberTrivia));
 
-      verify(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber));
+      verify(mockNumberTriviaRepository.getConcreteNumberTrivia(searchEntity));
 
       verifyNoMoreInteractions(mockNumberTriviaRepository);
     },
