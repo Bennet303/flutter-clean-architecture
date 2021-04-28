@@ -1,5 +1,5 @@
 import 'package:clean_architecture/core/entities/abstract.entity.dart';
-import 'package:clean_architecture/core/errors.dart';
+import 'package:clean_architecture/core/error/errors.dart';
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 

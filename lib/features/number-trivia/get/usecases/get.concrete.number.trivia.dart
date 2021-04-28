@@ -1,4 +1,4 @@
-import 'package:clean_architecture/core/errors.dart';
+import 'package:clean_architecture/core/error/errors.dart';
 import 'package:clean_architecture/features/number-trivia/get/entities/number.trivia.entity.dart';
 import 'package:clean_architecture/features/number-trivia/get/entities/number.trivia.search.entity.dart';
 import 'package:clean_architecture/features/number-trivia/get/repository/abstract.number.trivia.repository.dart';
