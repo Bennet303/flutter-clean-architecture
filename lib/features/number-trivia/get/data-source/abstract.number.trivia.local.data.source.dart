@@ -1,6 +1,6 @@
 import 'package:clean_architecture/features/number-trivia/get/models/number.trivia.model.dart';
 
-abstract class NumberTriviaLocalDataSource {
+abstract class AbstractNumberTriviaLocalDataSource {
   /// Gets the cached [NumberTriviaModel] which was gotten the last time
   /// the user had an internet connection.
   ///
