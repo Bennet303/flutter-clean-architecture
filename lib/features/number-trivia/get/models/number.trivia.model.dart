@@ -18,6 +18,13 @@ class NumberTriviaModel extends AbstractModel {
         number: (json[Constants.JSON_NUMBER_FIELD] as num).toInt(),
       );
 
+  Map<String, dynamic> toJson() {
+    return {
+      'text': text,
+      'number': number,
+    };
+  }
+
   @override
   List<Object> get props => [this.text, this.number];
 }
