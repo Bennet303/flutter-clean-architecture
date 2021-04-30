@@ -26,10 +26,8 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
     @required this.inputConverter,
   })  : assert(getConcreteNumberTrivia != null),
         assert(getRandomNumberTrivia != null),
-        assert(inputConverter != null);
-
-  @override
-  NumberTriviaState get initialState => NumberTriviaInitial();
+        assert(inputConverter != null),
+        super(NumberTriviaInitial());
 
   @override
   Stream<NumberTriviaState> mapEventToState(NumberTriviaEvent event) async* {

@@ -40,7 +40,7 @@ main() {
   });
 
   test('initialState shoud be Empty', () {
-    expect(bloc.initialState, equals(NumberTriviaInitial()));
+    expect(bloc.state, equals(NumberTriviaInitial()));
   });
 
   group('GetTriviaForConcreteNumber', () {
@@ -60,7 +60,7 @@ main() {
             .thenReturn(Right(tNumberParsed));
 
         // act
-        bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+        bloc.add(GetTriviaForConcreteNumber(tNumberString));
         await untilCalled(mockInputConverter.stringToUnsignedInteger(any));
 
         // assert
@@ -82,7 +82,7 @@ main() {
       expectLater(bloc.state, emitsInOrder(expected));
 
       // act
-      bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
     });
 
     test(
@@ -94,7 +94,7 @@ main() {
             .thenAnswer((_) async => Right(tNumberTrivia));
 
         // act
-        bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+        bloc.add(GetTriviaForConcreteNumber(tNumberString));
         await untilCalled(
             mockGetConcreteNumberTrivia(param: anyNamed('param')));
 
@@ -122,7 +122,7 @@ main() {
         expectLater(bloc.state, emitsInOrder(expected));
 
         // act
-        bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+        bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
     );
 
@@ -143,7 +143,7 @@ main() {
         expectLater(bloc.state, emitsInOrder(expected));
 
         // act
-        bloc.dispatch(GetTriviaForConcreteNumber(tNumberString));
+        bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
     );
   });
@@ -156,7 +156,7 @@ main() {
           .thenAnswer((_) async => Right(tNumberTrivia));
 
       // act
-      bloc.dispatch(GetTriviaForRandomNumber());
+      bloc.add(GetTriviaForRandomNumber());
       await untilCalled(mockGetRandomNumberTrivia(param: anyNamed('param')));
 
       // assert
@@ -179,7 +179,7 @@ main() {
         expectLater(bloc.state, emitsInOrder(expected));
 
         // act
-        bloc.dispatch(GetTriviaForRandomNumber());
+        bloc.add(GetTriviaForRandomNumber());
       },
     );
 
@@ -199,7 +199,7 @@ main() {
         expectLater(bloc.state, emitsInOrder(expected));
 
         // act
-        bloc.dispatch(GetTriviaForRandomNumber());
+        bloc.add(GetTriviaForRandomNumber());
       },
     );
   });
