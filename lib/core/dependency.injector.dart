@@ -6,6 +6,8 @@ import 'package:clean_architecture/features/number-trivia/get/data-source/number
 import 'package:clean_architecture/features/number-trivia/get/data-source/number.trivia.remote.data.source.dart';
 import 'package:clean_architecture/features/number-trivia/get/repository/abstract.number.trivia.repository.dart';
 import 'package:clean_architecture/features/number-trivia/get/repository/number.trivia.repository.dart';
+import 'package:clean_architecture/features/number-trivia/get/usecases/abstract.get.concrete.number.trivia.dart';
+import 'package:clean_architecture/features/number-trivia/get/usecases/abstract.get.random.number.trivia.dart';
 import 'package:clean_architecture/features/number-trivia/get/usecases/get.concrete.number.trivia.dart';
 import 'package:clean_architecture/features/number-trivia/get/usecases/get.random.number.trivia.dart';
 import 'package:clean_architecture/pages/number-trivia/states/number.trivia.bloc.dart';
@@ -26,8 +28,10 @@ Future<void> init() async {
     ),
   );
   //* Use Case
-  injector.registerLazySingleton(() => GetConcreteNumberTrivia(injector()));
-  injector.registerLazySingleton(() => GetRandomNumberTrivia(injector()));
+  injector.registerLazySingleton<AbstractGetConcreteNumberTrivia>(
+      () => GetConcreteNumberTrivia(injector()));
+  injector.registerLazySingleton<AbstractGetRandomNumberTrivia>(
+      () => GetRandomNumberTrivia(injector()));
 
   //* Repository
   injector.registerLazySingleton<AbstractNumberTriviaRepository>(
