@@ -6,4 +6,8 @@ import 'package:dartz/dartz.dart';
 
 abstract class AbstractGetConcreteNumberTrivia extends AbstractUseCase<
     NumberTriviaSearchEntity,
-    Future<Either<AbstractError, NumberTriviaEntity>>> {}
+    Future<Either<AbstractError, NumberTriviaEntity>>> {
+  @override
+  Future<Either<AbstractError, NumberTriviaEntity>> call(
+      {NumberTriviaSearchEntity param});
+}
